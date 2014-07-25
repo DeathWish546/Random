@@ -18,22 +18,22 @@ touch ~/films/action/rambo
 tree ~/films
 #you should get something like this:
 
-#/home/first.last/films
-#├── action
-#│   └── rambo
-#├── comedy
-#│   ├── bigMommasHouse
-#│   ├── ghostbusters
-#│   ├── ghostbusters2
-#│   └── shawnOfTheDead
-#└── horror
-#    ├── slasher
-#    │   ├── fridayThe13th
-#    │   ├── halloween
-#    │   └── predator
-#    ├── theHowling
-#    └── zombie
-#        └── dawnOfTheDead
+/home/first.last/films
+├── action
+│   └── rambo
+├── comedy
+│   ├── bigMommasHouse
+│   ├── ghostbusters
+│   ├── ghostbusters2
+│   └── shawnOfTheDead
+└── horror
+    ├── slasher
+    │   ├── fridayThe13th
+    │   ├── halloween
+    │   └── predator
+    ├── theHowling
+    └── zombie
+        └── dawnOfTheDead
 
 #############################################################################################################################
 #EXERCISE 2: mv, rm, glob matching {}, brace expansion []
@@ -62,28 +62,28 @@ touch ~/films/action/rocky{I,II,III,IV,V}
 tree ~/films
 #you should get something like this:
 
-# /home/first.last/films
-# ├── action
-# │   ├── firstBlood
-# │   ├── predator
-# │   ├── rockyI
-# │   ├── rockyII
-# │   ├── rockyIII
-# │   ├── rockyIV
-# │   └── rockyV
-# ├── comedy
-# │   ├── bigMommasHouse
-# │   ├── shawnOfTheDead
-# │   └── supernaturalComedy
-# │       ├── ghostbusters
-# │       └── ghostbusters2
-# └── horror
-#     ├── slasher
-#     │   ├── fridayThe13th
-#     │   └── halloween
-#     ├── theHowling
-#     └── zombie
-#         └── dawnOfTheDead
+ /home/first.last/films
+ ├── action
+ │   ├── firstBlood
+ │   ├── predator
+ │   ├── rockyI
+ │   ├── rockyII
+ │   ├── rockyIII
+ │   ├── rockyIV
+ │   └── rockyV
+ ├── comedy
+ │   ├── bigMommasHouse
+ │   ├── shawnOfTheDead
+ │   └── supernaturalComedy
+ │       ├── ghostbusters
+ │       └── ghostbusters2
+ └── horror
+     ├── slasher
+     │   ├── fridayThe13th
+     │   └── halloween
+     ├── theHowling
+     └── zombie
+         └── dawnOfTheDead
 
 #############################################################################################################################
 #EXERCISE 3: vi/vim/text editor of your choice
@@ -116,12 +116,67 @@ tree ~/films
 #EXERCISE 4: wc, fgrep, cut, sort
 
 #1.    Count the number of characters in the ‘accounts’ file.
+wc -m accounts
+#OUTPUT: 
+123 accounts
+
 #2.    Count the number of words in the ‘accounts’ file.
+wc -w accounts
+#OUTPUT: 
+8 accounts
+
 #3.    Count the number of lines in the ‘accounts’ file.
+wc -l accounts
+#OUTPUT:
+4 accounts
+
 #4.    Display the line containing ‘Sheldon Cooper’.
+fgrep "Sheldon Cooper" accounts
+#OUTPUT:
+PIN534:Sheldon Cooper:1:1024
+
 #5.    Display the account that has id of 3. (tip: look for ":3:")
+fgrep ":3:" accounts
+#OUTPUT:
+PIN210:Rajesh Koothrappali:3:556
+
 #6.    Display the account with a balance of 620.
+fgrep ":620" accounts
+#OUTPUT:
+PIN756:Leonard Hofstadter:2:620
+
 #7.    Retrieve and display the name of every person represented in the ‘accounts’ file.
+cut -d ":" -f2 accounts
+#OUTPUT:
+Sheldon Cooper
+Leonard Hofstadter
+Howard Wolowitz
+Rajesh Koothrappali
+
 #8.    Retrieve the pin numbers for every person represented in the ‘accounts’ file.
+cut -d ":" -f3 accounts
+#OUTPUT:
+1
+2
+4
+3
+
 #9.    Retrieve the balance and the real name for every person in the ‘accounts’ file.
+cut -d ":" -f2,4 accounts
+#OUTPUT:
+Sheldon Cooper:1024
+Leonard Hofstadter:620
+Howard Wolowitz:213
+Rajesh Koothrappali:556
+
 #10.  Display the entries in the ‘accounts’ file sorted by account balance in descending order.
+sort -t":" -nrk4 accounts
+
+#OUTPUT:
+PIN534:Sheldon Cooper:1:1024
+PIN756:Leonard Hofstadter:2:620
+PIN210:Rajesh Koothrappali:3:556
+PIN769:Howard Wolowitz:4:213
+
+#############################################################################################################################
+#EXERCISE 5a: chmod
