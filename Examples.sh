@@ -88,29 +88,29 @@ tree ~/films
 #############################################################################################################################
 #EXERCISE 3: vi/vim/text editor of your choice
 
-#keystrokes:
-#i -lowercase i: insert mode starting before whatever character your cursor is highlighting
-#I -uppercase i: insert mode starting at the start of the line
-#dw: delete everything starting at the highlighted character to the next space. 
-	#e.g. "bob was here?", if i highlight 'a' and press dw, i would get "bob where?"
-#dd: delete entire row, including new line character
-#D: delete everything starting at and after highlighted character
-#p: puts a copy of whatever you deleted last, NOT UNDO!!
-	#e.g. "bob was here?", press D at 'b' and delete whole line, then p anywhere and it will print "bob was here?" wherever you're highlighted
-#x, or nx: delete highlighted character, or n characters including highlighted
-#o: inserts a new line, then insert mode starting on next line
-#O: inserts a new line, then insert mode starting on current line
-#A: insert mode starting at the end of the line
-#ZZ: write file and quit
+keystrokes:
+i -lowercase i: insert mode starting before whatever character your cursor is highlighting
+I -uppercase i: insert mode starting at the start of the line
+dw: delete everything starting at the highlighted character to the next space. 
+	e.g. "bob was here?", if i highlight 'a' and press dw, i would get "bob where?"
+dd: delete entire row, including new line character
+D: delete everything starting at and after highlighted character
+p: puts a copy of whatever you deleted last, NOT UNDO!!
+	e.g. "bob was here?", press D at 'b' and delete whole line, then p anywhere and it will print "bob was here?" wherever you're highlighted
+x, or nx: delete highlighted character, or n characters including highlighted
+o: inserts a new line, then insert mode starting on next line
+O: inserts a new line, then insert mode starting on current line
+A: insert mode starting at the end of the line
+ZZ: write file and quit
 
 #Use vi to create the ‘accounts’ file:
 
-#PIN534:Sheldon Cooper:1:1024
-#PIN756:Leonard Hofstadter:2:620
-#PIN769:Howard Wolowitz:4:213
-#PIN210:Rajesh Koothrappali:3:556
+PIN534:Sheldon Cooper:1:1024
+PIN756:Leonard Hofstadter:2:620
+PIN769:Howard Wolowitz:4:213
+PIN210:Rajesh Koothrappali:3:556
 
-#...idk just go into vi, press a/i/I/O/o/A/whatever the hell you want and type that shit in
+...idk just go into vi, press a/i/I/O/o/A/whatever the hell you want and type that shit in
 
 #############################################################################################################################
 #EXERCISE 4: wc, fgrep, cut, sort
