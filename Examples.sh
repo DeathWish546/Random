@@ -459,3 +459,55 @@ Sheldon Cooper
 Leonard Hofstadter
 Howard Wolowitz
 Rajesh Koothrappali
+
+#############################################################################################################################
+#EXERCISE 9: I THOUGHT WE HAD A BREAK THIS MORNING, i.e. Job Control
+#Perform the following tasks
+#1. Run the sleep commands for 1000 seconds in the background
+sleep 1000&
+
+#OUTPUT:
+$jobid (THIS IS DIFFERENT FROM PID, WHICH IS PROCESS ID!!!)
+
+#2. Use the ps command to identify the PID of the sleep command
+ps
+
+#OUTPUT:
+PID TTY          TIME CMD
+...
+$pid ... sleep
+...
+
+#3. Kill the sleep command and check the sleep process was terminated successfully.
+kill $pid
+
+ps
+
+#OUTPUT:
+PID TTY          TIME CMD
+...
+[1]+  Terminated              sleep 1000
+
+#4. Start another sleep command for 1000 seconds in the background
+sleep 1000&
+
+OUTPUT:
+$jobid
+
+#5. Use the jobs command to identify the JID of the sleep command
+jobs
+
+#OUTPUT:
+[1]+  Running                 sleep 1000 &
+
+#6. Bring the sleep command into the foreground
+fg $jobid
+
+#OUTPUT:
+sleep 1000
+
+#7. Kill the sleep command and check the process was terminated successfully.
+ctrl+c
+
+#OUTPUT:
+^C
