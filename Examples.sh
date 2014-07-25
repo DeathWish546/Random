@@ -398,3 +398,64 @@ egrep "^[^a-zA-Z]*$" file
 
 #############################################################################################################################
 #EXERCISE 8: $,  $(( ... )), $[ ... ],  $( ... )
+
+#Perform the following actions on the command line.
+#1. Set a variable x equal to "Andy".  Set a variable y equal to "Bruce".  Try the following:    echo xy x y $x$y $x $y
+x=Andy y=Bruce
+echo xy x y $x$y $x $y
+
+#OUTPUT:
+xy x y AndyBruce Andy Bruce
+
+#2. Set the variable x equal to 4 and the variable y equal to 9.  Display the the result of summing the contents of variable x and variable y.
+x=4 y=9
+echo $(($x+$y))
+
+#OUTPUT:
+13
+
+#3. Set the variable x equal to the output of the command:  ls
+x=$(ls)
+echo $x
+
+#OUTPUT:
+#stuff
+
+#4. Retrieve all the balances from the accounts file and store the result in a variable called "balances".  Display variable "balances".
+balances=$(cut -d ":" -f4 accounts)
+echo balances
+
+#OUTPUT:
+1024 620 213 556
+
+#5. Display the result of 4 + 3 * 2.   Display the result of (4+3)/2.
+echo $((4 + 3 * 2))
+echo $(((4+3)/2))
+
+#OUTPUT:
+10
+3
+
+#6. Create a file that has some mathematical formula.  Send the contents of the file to bc (bench calculator) and store the result in a shell variable. 
+vim two
+
+1+1
+
+cat two | bc
+
+#OUTPUT:
+2
+
+#7. Use vi to create a file with “:” on line 1 and “6/3” on line 2. Using line 1 as the delimiter and line 2 as the field, cut and display the real names from the accounts file.
+vi file
+
+:
+6/3
+
+cut -d "$(head -1 file)" -f "$(tail -1 file | bc)" accounts
+
+#OUTPUT:
+Sheldon Cooper
+Leonard Hofstadter
+Howard Wolowitz
+Rajesh Koothrappali
