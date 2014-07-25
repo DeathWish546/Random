@@ -115,37 +115,37 @@ PIN210:Rajesh Koothrappali:3:556
 #############################################################################################################################
 #EXERCISE 4: wc, fgrep, cut, sort
 
-#1.    Count the number of characters in the ‘accounts’ file.
+#1. Count the number of characters in the ‘accounts’ file.
 wc -m accounts
 #OUTPUT: 
 123 accounts
 
-#2.    Count the number of words in the ‘accounts’ file.
+#2. Count the number of words in the ‘accounts’ file.
 wc -w accounts
 #OUTPUT: 
 8 accounts
 
-#3.    Count the number of lines in the ‘accounts’ file.
+#3. Count the number of lines in the ‘accounts’ file.
 wc -l accounts
 #OUTPUT:
 4 accounts
 
-#4.    Display the line containing ‘Sheldon Cooper’.
+#4. Display the line containing ‘Sheldon Cooper’.
 fgrep "Sheldon Cooper" accounts
 #OUTPUT:
 PIN534:Sheldon Cooper:1:1024
 
-#5.    Display the account that has id of 3. (tip: look for ":3:")
+#5. Display the account that has id of 3. (tip: look for ":3:")
 fgrep ":3:" accounts
 #OUTPUT:
 PIN210:Rajesh Koothrappali:3:556
 
-#6.    Display the account with a balance of 620.
+#6. Display the account with a balance of 620.
 fgrep ":620" accounts
 #OUTPUT:
 PIN756:Leonard Hofstadter:2:620
 
-#7.    Retrieve and display the name of every person represented in the ‘accounts’ file.
+#7. Retrieve and display the name of every person represented in the ‘accounts’ file.
 cut -d ":" -f2 accounts
 #OUTPUT:
 Sheldon Cooper
@@ -153,7 +153,7 @@ Leonard Hofstadter
 Howard Wolowitz
 Rajesh Koothrappali
 
-#8.    Retrieve the pin numbers for every person represented in the ‘accounts’ file.
+#8. Retrieve the pin numbers for every person represented in the ‘accounts’ file.
 cut -d ":" -f3 accounts
 #OUTPUT:
 1
@@ -161,7 +161,7 @@ cut -d ":" -f3 accounts
 4
 3
 
-#9.    Retrieve the balance and the real name for every person in the ‘accounts’ file.
+#9. Retrieve the balance and the real name for every person in the ‘accounts’ file.
 cut -d ":" -f2,4 accounts
 #OUTPUT:
 Sheldon Cooper:1024
@@ -169,7 +169,7 @@ Leonard Hofstadter:620
 Howard Wolowitz:213
 Rajesh Koothrappali:556
 
-#10.  Display the entries in the ‘accounts’ file sorted by account balance in descending order.
+#10. Display the entries in the ‘accounts’ file sorted by account balance in descending order.
 sort -t":" -nrk4 accounts
 
 #OUTPUT:
@@ -184,21 +184,21 @@ PIN769:Howard Wolowitz:4:213
 Create a regular file and run through the following steps:
 touch phallic_object
 
-1.    Alter permissions using chmod so that you have full access to the file and nobody else has any access. Verify that this has worked.
+1. Alter permissions using chmod so that you have full access to the file and nobody else has any access. Verify that this has worked.
 chmod 700 phallic_object #too lazy to do the chmod agou += crap
 
 ls -l phallic_object 
 #OUTPUT:
 -rwx------ ... phallic_object
 
-2.    Give yourself read-write access, the files group read access only and no access to anyone else.
+2. Give yourself read-write access, the files group read access only and no access to anyone else.
 chmod 640 phallic_object 
 
 ls -l phallic_object 
 #OUTPUT:
 -rw-r-----  ... phallic_object
 
-3.    Give yourself read-execute access, and execute only access to all others.
+3. Give yourself read-execute access, and execute only access to all others.
 chmod 511 phallic_object 
 
 ls -l phallic_object 
@@ -208,17 +208,17 @@ ls -l phallic_object
 Create a directory.
 mkdir ectory
 
-1.    Give yourself read and execute access but no write access. What does this prevent you from doing?
+1. Give yourself read and execute access but no write access. What does this prevent you from doing?
 chmod 500 ectory
 
 Cannot make/remove files or directories, but if file/directory already exist and you have permission to edit then you can do stuff to them
 
-2.    Give yourself all privileges except for read access. What does this prevent you from doing?
+2. Give yourself all privileges except for read access. What does this prevent you from doing?
 chmod 300 ectory
 
 Cannot ls the directory 
 
-3.    Deny yourself execute access on the directory. What does this prevent you from doing?
+3. Deny yourself execute access on the directory. What does this prevent you from doing?
 
 chmod 600 ectory
 
@@ -226,19 +226,19 @@ Cannot cd into it
 
 #EXERCISE 5b: find
 #From the films directory:
-#1.    Locate all files named ‘shawnOfTheDead’ in your films directory and sub-directories.
+#1. Locate all files named ‘shawnOfTheDead’ in your films directory and sub-directories.
 find . -name 'shawnOfTheDead' -type f
 
 #OUTPUT:
 ./comedy/shawnOfTheDead
 
-#2.    Locate all files in all subdirectories that were modified in the last 30 minutes.
+#2. Locate all files in all subdirectories that were modified in the last 30 minutes.
 find . -mmin -30 -type f
 
 #OUTPUT:
 #any files that were modified in the last 30 minutes
 
-#3.    Locate all files in all subdirectories with either ‘the’ or ‘The’ in the name.
+#3. Locate all files in all subdirectories with either ‘the’ or ‘The’ in the name.
 find . -iname "*the*" -type f
 
 #OUTPUT:
@@ -247,13 +247,68 @@ find . -iname "*the*" -type f
 ./horror/theHowling
 ./comedy/shawnOfTheDead
 
-#4.    Turn off write permission for all files that contain ‘the’ or ‘The’ in the name.
+#4. Turn off write permission for all files that contain ‘the’ or ‘The’ in the name.
 $find . -iname "*the*" -type f -exec chmod a-w {} \;
 
 #ls -l ./* to see if they're off
 
-#5.    Interactively remove all files with ‘the’ or ‘The’ in the name.  (You can keep the files if you answer ‘n’ when prompted.)
+#5. Interactively remove all files with ‘the’ or ‘The’ in the name.  (You can keep the files if you answer ‘n’ when prompted.)
 find . -iname "*the*" -type f -exec rm -i {} \;
 
 #############################################################################################################################
 #EXERCISE 6: Stream Redirection on Command Line
+
+#Perform the following actions using a single command on the command line.
+#1. Display the contents of the ‘accounts’ file in upper case.
+cat accounts | tr [:lower:] [:upper:]
+
+#OUTPUT:
+PIN534:SHELDON COOPER:1:1024
+PIN756:LEONARD HOFSTADTER:2:620
+PIN769:HOWARD WOLOWITZ:4:213
+PIN210:RAJESH KOOTHRAPPALI:3:556
+
+#2. Display the contents of the ‘accounts’ file with all the colons changed to spaces.
+cat accounts | tr ":" " "
+
+#OUTPUT:
+PIN534 Sheldon Cooper 1 1024
+PIN756 Leonard Hofstadter 2 620
+PIN769 Howard Wolowitz 4 213
+PIN210 Rajesh Koothrappali 3 556
+
+#3. Retrieve the line containing ‘Sheldon Cooper’ from the accounts file and redirect it into a file called "sheldon".  If the file "sheldon" already exists then overwrite the file.
+grep 'Sheldon Cooper' accounts > sheldon
+
+cat sheldon
+#OUTPUT:
+PIN534:Sheldon Cooper:1:1024
+
+#4. Retrieve the line containing ‘Leonard’ and append it into the sheldon file.
+grep 'Leonard' accounts >> sheldon
+
+cat sheldon
+#OUTPUT:
+PIN534:Sheldon Cooper:1:1024
+PIN756:Leonard Hofstadter:2:620
+
+#5. Use echo and wc to count the characters in the word “characters”.
+echo characters | wc -m
+
+#OUTPUT:
+11
+
+#6. Display the number of lines in the ‘accounts’ file without displaying the name of the file.
+cat accounts | wc -l
+
+#OUTPUT:
+4
+
+#7. Use sort to order the output of ls -l based on various different fields.
+ls -l | sort -t" " -nrk[1-9]
+
+#OUTPUT:
+#too lazy to copy paste all 9 variations
+
+#############################################################################################################################
+#EXERCISE 7: Regular Expression
