@@ -180,3 +180,80 @@ PIN769:Howard Wolowitz:4:213
 
 #############################################################################################################################
 #EXERCISE 5a: chmod
+
+Create a regular file and run through the following steps:
+touch phallic_object
+
+1.    Alter permissions using chmod so that you have full access to the file and nobody else has any access. Verify that this has worked.
+chmod 700 phallic_object #too lazy to do the chmod agou += crap
+
+ls -l phallic_object 
+#OUTPUT:
+-rwx------ ... phallic_object
+
+2.    Give yourself read-write access, the file's group read access only and no access to anyone else.
+chmod 640 phallic_object 
+
+ls -l phallic_object 
+#OUTPUT:
+-rw-r-----  ... phallic_object
+
+3.    Give yourself read-execute access, and execute only access to all others.
+chmod 511 phallic_object 
+
+ls -l phallic_object 
+#OUTPUT:
+-r-x--x--x   ... phallic_object
+ 
+Create a directory.
+mkdir ectory
+
+1.    Give yourself read and execute access but no write access. What does this prevent you from doing?
+chmod 500 ectory
+
+Cannot make/remove files or directories, but if file/directory already exist and you have permission to edit then you can do stuff to them
+
+2.    Give yourself all privileges except for read access. What does this prevent you from doing?
+chmod 300 ectory
+
+Cannot ls the directory 
+
+3.    Deny yourself execute access on the directory. What does this prevent you from doing?
+
+chmod 600 ectory
+
+Cannot cd into it
+
+#EXERCISE 5b: find
+#From the films directory:
+#1.    Locate all files named ‘shawnOfTheDead’ in your films directory and sub-directories.
+find . -name 'shawnOfTheDead' -type f
+
+#OUTPUT:
+./comedy/shawnOfTheDead
+
+#2.    Locate all files in all subdirectories that were modified in the last 30 minutes.
+find . -mmin -30 -type f
+
+#OUTPUT:
+#any files that were modified in the last 30 minutes
+
+#3.    Locate all files in all subdirectories with either ‘the’ or ‘The’ in the name.
+find . -iname "*the*" -type f
+
+#OUTPUT:
+./horror/zombie/dawnOfTheDead
+./horror/slasher/fridayThe13th
+./horror/theHowling
+./comedy/shawnOfTheDead
+
+#4.    Turn off write permission for all files that contain ‘the’ or ‘The’ in the name.
+$find . -iname "*the*" -type f -exec chmod a-w {} \;
+
+#ls -l ./* to see if they're off
+
+#5.    Interactively remove all files with ‘the’ or ‘The’ in the name.  (You can keep the files if you answer ‘n’ when prompted.)
+find . -iname "*the*" -type f -exec rm -i {} \;
+
+#############################################################################################################################
+#EXERCISE 6: Stream Redirection on Command Line
