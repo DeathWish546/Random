@@ -311,4 +311,90 @@ ls -l | sort -t" " -nrk[1-9]
 #too lazy to copy paste all 9 variations
 
 #############################################################################################################################
-#EXERCISE 7: Regular Expression
+#EXERCISE 7: Regular Expression, grep/egrep
+vim file
+
+07999234123
+075435345623
+07AAAAAAAAA
+07bbbbbbbbb
+B41RTG
+01223567345
+A345GUF
+B3GHJ
+768745
+KL563478K
+kl563478kx
+[l563478k
+6535345354554234
+B45JKHL
+65-34-76
+012234567867
+07856456636
+BB4JUK
+56-567-67
+B546HUY
+BB345614H
+07666345234
+45-34-25
+01223456755
+JH761423G
+
+#Use grep or egrep to extract the following:
+#1. Mobile phone numbers (11 digits starting in '07')
+egrep "^07[0-9]{9}$" file
+
+#OUTPUT:
+07999234123
+07856456636
+07666345234
+
+#2. National insurance numbers (2 letters, 6 digits, 1 letter)
+egrep "^[a-zA-Z]{2}[0-9]{6}[a-zA-Z]$" file
+
+#OUTPUT:
+KL563478K
+BB345614H
+JH761423G
+
+#3. Cambridge telephone numbers (11 digits starting in '01223')
+egrep "^01223[0-9]{6}$" file
+
+#OUTPUT:
+01223567345
+01223456755
+
+#4. Bank sort codes (2 digits, dash, 2 digits, dash, 2 digits)
+egrep "^([0-9]{2}-){2}[0-9]{2}" file
+
+#OUTPUT:
+65-34-76
+45-34-25
+
+#5. B-reg number plates ('B', 1-3 digits, 3 letters)
+egrep "^B[0-9]{1,3}[a-zA-Z]{3}$" file
+
+#OUTPUT:
+B41RTG
+B3GHJ
+B546HUY
+
+#6. All lines that do not contain letters
+egrep "^[^a-zA-Z]*$" file
+
+#OUTPUT:
+07999234123
+075435345623
+01223567345
+768745
+6535345354554234
+65-34-76
+012234567867
+07856456636
+56-567-67
+07666345234
+45-34-25
+01223456755
+
+#############################################################################################################################
+#EXERCISE 8: $,  $(( ... )), $[ ... ],  $( ... )
