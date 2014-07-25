@@ -62,7 +62,7 @@ touch ~/films/action/rocky{I,II,III,IV,V}
 tree ~/films
 #you should get something like this:
 
-# /home/mibo.zhao/films
+# /home/first.last/films
 # ├── action
 # │   ├── firstBlood
 # │   ├── predator
@@ -85,3 +85,43 @@ tree ~/films
 #     └── zombie
 #         └── dawnOfTheDead
 
+#############################################################################################################################
+#EXERCISE 3: vi/vim/text editor of your choice
+
+#keystrokes:
+#i -lowercase i: insert mode starting before whatever character your cursor is highlighting
+#I -uppercase i: insert mode starting at the start of the line
+#dw: delete everything starting at the highlighted character to the next space. 
+	#e.g. "bob was here?", if i highlight 'a' and press dw, i would get "bob where?"
+#dd: delete entire row, including new line character
+#D: delete everything starting at and after highlighted character
+#p: puts a copy of whatever you deleted last, NOT UNDO!!
+	#e.g. "bob was here?", press D at 'b' and delete whole line, then p anywhere and it will print "bob was here?" wherever you're highlighted
+#x, or nx: delete highlighted character, or n characters including highlighted
+#o: inserts a new line, then insert mode starting on next line
+#O: inserts a new line, then insert mode starting on current line
+#A: insert mode starting at the end of the line
+#ZZ: write file and quit
+
+#Use vi to create the ‘accounts’ file:
+
+#PIN534:Sheldon Cooper:1:1024
+#PIN756:Leonard Hofstadter:2:620
+#PIN769:Howard Wolowitz:4:213
+#PIN210:Rajesh Koothrappali:3:556
+
+#...idk just go into vi, press a/i/I/O/o/A/whatever the hell you want and type that shit in
+
+#############################################################################################################################
+#EXERCISE 4: wc, fgrep, cut, sort
+
+#1.    Count the number of characters in the ‘accounts’ file.
+#2.    Count the number of words in the ‘accounts’ file.
+#3.    Count the number of lines in the ‘accounts’ file.
+#4.    Display the line containing ‘Sheldon Cooper’.
+#5.    Display the account that has id of 3. (tip: look for ":3:")
+#6.    Display the account with a balance of 620.
+#7.    Retrieve and display the name of every person represented in the ‘accounts’ file.
+#8.    Retrieve the pin numbers for every person represented in the ‘accounts’ file.
+#9.    Retrieve the balance and the real name for every person in the ‘accounts’ file.
+#10.  Display the entries in the ‘accounts’ file sorted by account balance in descending order.
