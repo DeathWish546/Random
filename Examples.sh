@@ -96,7 +96,7 @@ dw: delete everything starting at the highlighted character to the next space.
 dd: delete entire row, including new line character
 D: delete everything starting at and after highlighted character
 p: puts a copy of whatever you deleted last, NOT UNDO!!
-	e.g. "bob was here?", press D at 'b' and delete whole line, then p anywhere and it will print "bob was here?" wherever you're highlighted
+	e.g. "bob was here?", press D at 'b' and delete whole line, then p anywhere and it will print "bob was here?" wherever you are highlighted
 x, or nx: delete highlighted character, or n characters including highlighted
 o: inserts a new line, then insert mode starting on next line
 O: inserts a new line, then insert mode starting on current line
@@ -191,7 +191,7 @@ ls -l phallic_object
 #OUTPUT:
 -rwx------ ... phallic_object
 
-2.    Give yourself read-write access, the file's group read access only and no access to anyone else.
+2.    Give yourself read-write access, the files group read access only and no access to anyone else.
 chmod 640 phallic_object 
 
 ls -l phallic_object 
